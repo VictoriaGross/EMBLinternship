@@ -66,7 +66,9 @@ print("edge training is done")
 segmentation = elf_workflow.multicut_segmentation(raw = raw, boundaries = membrane_prediction, rf = rf, use_2dws = False, multicut_solver = 'blockwise-multicut', solver_kwargs = {'internal_solver':'kernighan-lin', 'block_shape':[100,100,100]}, n_threads = 1)
 
 #save segmentation to h5 file 
-f = h5py.File('/scratch/emcf/s4a2_mc/s4a2_t012_mc.h5', 'w') 
+f = open_file('/scratch/emcf/s4a2_mc/s4a2_t012_mc.h5', 'w') 
+ 
+#h5py.File('/scratch/emcf/s4a2_mc/s4a2_t012_mc.h5', 'w') 
 f.create_dataset('data', data = segmentation) 
 
 with napari.gui_qt(): 
@@ -116,4 +118,4 @@ with napari.gui_qt():
         viewer.add_labels(segmentation, name = 'multicut')
         viewer.add_image(ground_truth, name = 'DMV')
 
-#segmentation worked auite nicely, but there are maybe some parts over-segmented 
+#segmentation worked quite nicely, but there are maybe some parts over-segmented 
