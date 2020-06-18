@@ -21,7 +21,7 @@ sv_test = []
 ground_truth = []
 multicut = []
 
-names = ['s4a2_t002', 's4a2_t018'] #, 's4a2_t028']
+names = ['s4a2_t002', 's4a2_t018', 's4a2_t028']
 
 data_path_1 = '/scratch/emcf/segmentation_inputs/'
 data_path_results = '/scratch/gross/src/segmentation/results/'
@@ -53,6 +53,7 @@ for name in names: #['s4a2_t002', 's4a2_t018']: # 's4a2_t024', 's4a2_t028']:
 	ground_truth.append(ground_truth_1)
 
 	#multicut 
+	#filename = name + '_mc_blockwise.h5'
 	filename = name + '_mc.h5'
 	f = open_file(data_path_results + filename, 'r') 
 	multicut.append(f['data'][:,:,:].astype(np.float32))
